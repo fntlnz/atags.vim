@@ -9,7 +9,7 @@ Plug 'fntlnz/atags.vim'
 # Configure
 
 ```vim
-map ]gt :call atags#generate<cr>
+map ]gt :call atags#generate()<cr>
 ```
 
 # Work in progress
