@@ -24,7 +24,7 @@ function! atags#onGenerateExit()
 
 endfunction
 
-" Section Commands
+" Section: Commands
 function! atags#setup()
   if !exists('g:atags_on_generate_stderr')
     let g:atags_on_generate_stderr = 'atags#onGenerateErr'
@@ -42,8 +42,7 @@ function! atags#setup()
     let g:atags_build_commands_list = [
           \"ctags -R -f tags.tmp",
           \"awk 'length($0) < 400' tags.tmp > tags",
-          \"rm tags.tmp",
-          \"echo 'ok'"
+          \"rm tags.tmp"
           \]
   endif
 
@@ -56,6 +55,7 @@ function! atags#generate()
         \ 'on_exit': function(g:atags_on_generate_exit)
         \ }
   let g:atags_had_errors=0
+  call extend(g:atags_build_commands_list, ["echo 'ok'"])
   call jobstart(join(g:atags_build_commands_list, ";"), opts)
 endfunction
 
