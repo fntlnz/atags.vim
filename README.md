@@ -36,7 +36,7 @@ map <Leader>t :call atags#generate()<cr>
 ### Generate tags before writing to a file
 
 ```
-autocmd BufWritePost,FileWritePost * call atags#setup()
+autocmd BufWritePost,FileWritePost * call atags#generate()
 ```
 
 # Work in progress
