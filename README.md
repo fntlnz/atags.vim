@@ -29,13 +29,13 @@ let g:atags_build_commands_list = [
 
 ### Generate tags with `<Leader>t`
 
-```vim
+```viml
 map <Leader>t :call atags#generate()<cr>
 ```
 
 ### Generate tags before writing to a file
 
-```
+```viml
 autocmd BufWritePost,FileWritePost * call atags#generate()
 ```
 
