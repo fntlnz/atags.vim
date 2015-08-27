@@ -3,16 +3,16 @@ atags.vim is a neovim plugin that help you to manage async generation of tags.
 # Installation
 
 Using [vim-plug](https://github.com/junegunn/vim-plug)
+
 ```vim
 Plug 'fntlnz/atags.vim'
 ```
 
 # Customization
 
-### Customize generation command
+### Customize the generation command
 
-This should be a list of commands that will be executed
-to generate your tags.
+The generation command is a list of commands that will be executed to generate your tags.
 
 This is the default generation command:
 
@@ -25,7 +25,7 @@ let g:atags_build_commands_list = [
 ```
 
 
-# Usage
+# Use cases
 
 ### Generate tags with `<Leader>t`
 
@@ -33,7 +33,7 @@ let g:atags_build_commands_list = [
 map <Leader>t :call atags#generate()<cr>
 ```
 
-### Generate tags before writing to a file
+### Generate tags everytime a file is being written.
 
 ```viml
 autocmd BufWritePost * call atags#generate()
@@ -41,6 +41,6 @@ autocmd BufWritePost * call atags#generate()
 
 # Work in progress
 
-- Support for different tag generators. At the moment this supports only ctags.
-- Use [tpope/vim-dispatch](https://gituhb.com/tpope/vim-dispatch) to be compatible with vim that doesn't have `jobstart`
-- Write docs
+- [] Support for different tag generators. At the moment this supports only ctags.
+- [] Use [tpope/vim-dispatch](https://gituhb.com/tpope/vim-dispatch) to be compatible with vim that doesn't have `jobstart`
+- [] Write the docs
