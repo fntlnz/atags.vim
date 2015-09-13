@@ -39,8 +39,16 @@ map <Leader>t :call atags#generate()<cr>
 autocmd BufWritePost * call atags#generate()
 ```
 
+### Generate tags using [stags](https://github.com/facebook/pfff) within a Docker container
+
+```viml
+let g:atags_build_commands_list = [
+    \"docker run --rm -v $PWD:/project -w /project fntlnz/pfff:latest stags -lang php -o tags -vim ."
+    \]
+]
+```
 # Work in progress
 
-- [ ] Support for different tag generators. At the moment this supports only ctags.
+- [x] ~~Support for different tag generators. At the moment this supports only ctags.~~
 - [ ] Use [tpope/vim-dispatch](https://gituhb.com/tpope/vim-dispatch) to be compatible with vim that doesn't have `jobstart`
 - [ ] Write the docs
