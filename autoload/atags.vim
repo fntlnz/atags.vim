@@ -15,7 +15,7 @@ function! atags#onGenerateErr(id, data)
 endfunction
 
 function! atags#onGenerateOut()
-  if g:atags_had_errors==0
+  if g:atags_had_errors==0 && g:atags_quiet==0
     echom "🎉 tags generated  🎉"
   endif
 endfunction
@@ -36,6 +36,10 @@ function! atags#setup()
 
   if !exists('g:atags_on_generate_exit')
     let g:atags_on_generate_exit = 'atags#onGenerateExit'
+  endif
+
+  if !exists('g:atags_quiet')
+    let g:atags_quiet = 0
   endif
 
   if !exists('g:atags_build_commands_list')
