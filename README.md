@@ -51,4 +51,4 @@ let g:atags_build_commands_list = [
 
 - [x] ~~Support for different tag generators. At the moment this supports only ctags.~~
 - [ ] Use [tpope/vim-dispatch](https://gituhb.com/tpope/vim-dispatch) to be compatible with vim that doesn't have `jobstart`
-- [ ] Write the docs
+- [x] Write the docs
