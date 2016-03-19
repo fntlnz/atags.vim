@@ -11,12 +11,12 @@ let g:atags_had_errors=0
 function! atags#onGenerateErr(id, data)
   let g:atags_had_errors=1
   let msg = "❗ An error occurred generating ctags: " . join(a:data)
-  echo msg
+  echom msg
 endfunction
 
 function! atags#onGenerateOut()
   if g:atags_had_errors==0
-    echo "🎉 tags generated  🎉"
+    echom "🎉 tags generated  🎉"
   endif
 endfunction
 
