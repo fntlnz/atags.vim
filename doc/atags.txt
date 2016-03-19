@@ -1,0 +1,61 @@
+*atags.txt* atags.vim async generation of tags
+
+Author: Lorenzo Fontana
+
+INTRODUCTION                                        *atags.vim*
+
+FUNCTIONS                                           *atags-functions*
+
+atags#generate()                                    *atags#generate()*
+        Generate tags using the commands provided in
+        |g:atags_build_commands_list|
+
+VARIABLES                                           *atags-variables*
+
+                                                    *g:atags_build_commands_list*
+g:atags_build_commands_list     (List)
+        List of commands that are run when tags are generated
+
+        Defaults:
+>
+        let g:atags_build_commands_list = [
+            \ "ctags -R -f tags.tmp",
+            \ "awk 'length($0) < 400' tags.tmp > tags",
+            \ "rm tags.tmp"
+            \ ]
+<
+
+                                                    *g:atags_on_generate_stderr*
+g:atags_on_generate_stderr      (Function)
+        Function called when the tags generation returns an error.
+
+                                                    *g:atags_on_generate_stdout*
+g:atags_on_generate_stdout      (Function)
+        Function called when the tags generation is successful.
+
+                                                    *g:atags_on_generate_exit*
+g:atags_on_generate_exit        (Function)
+        Function called when the tags generation ends.
+
+                                                    *g:atags_quiet*
+g:atags_quiet                   (Boolean)
+        Print messages when the tag generation does not return any error.
+
+        Defaults: 0
+
+EXAMPLES                                            *atags-examples*
+>
+        " generate tags every time a file is saved
+        autocmd BufWritePost * call atags#generate()
+
+        " ag automatically returns the files not in .gitignore
+        let g:atags_build_commands_list = [
+                    \ 'ag -g "" | ctags -L - --fields=+l -f tags.tmp',
+                    \ 'awk "length($0) < 400" tags.tmp > tags',
+                    \ 'rm tags.tmp'
+                    \ ]
+<
+
+ABOUT                                               *atags-about*
+
+vim:tw=78:et:ft=help:norl:
