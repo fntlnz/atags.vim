@@ -11,12 +11,12 @@ let g:atags_had_errors=0
 function! atags#onGenerateErr(id, data)
   let g:atags_had_errors=1
   let msg = "❗ An error occurred generating ctags: " . join(a:data)
-  echo msg
+  echom msg
 endfunction
 
 function! atags#onGenerateOut()
-  if g:atags_had_errors==0
-    echo "🎉 tags generated  🎉"
+  if g:atags_had_errors==0 && g:atags_quiet==0
+    echom "🎉 tags generated  🎉"
   endif
 endfunction
 
@@ -36,6 +36,10 @@ function! atags#setup()
 
   if !exists('g:atags_on_generate_exit')
     let g:atags_on_generate_exit = 'atags#onGenerateExit'
+  endif
+
+  if !exists('g:atags_quiet')
+    let g:atags_quiet = 0
   endif
 
   if !exists('g:atags_build_commands_list')
