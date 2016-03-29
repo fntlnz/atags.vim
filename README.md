@@ -39,7 +39,9 @@ map <Leader>t :call atags#generate()<cr>
 autocmd BufWritePost * call atags#generate()
 ```
 
-### Generate tags using [stags](https://github.com/facebook/pfff) within a Docker container
+### Generation examples
+
+#### Generate tags using [stags](https://github.com/facebook/pfff) within a *Docker container*
 
 ```viml
 let g:atags_build_commands_list = [
@@ -47,6 +49,27 @@ let g:atags_build_commands_list = [
     \]
 ]
 ```
+
+#### Generate tags only for files that are not in `.gitignore`
+
+```
+let g:atags_build_commands_list = [
+    \ 'ag -g "" | ctags -L - --fields=+l -f tags.tmp',
+    \ 'awk "length($0) < 400" tags.tmp > tags',
+    \ 'rm tags.tmp'
+    \ ]
+```
+
+#### Generate tags only for *PHP files* that are not in `.gitignore`
+
+```
+let g:atags_build_commands_list = [
+    \ 'ag --php -g "" | ctags -L - --fields=+l -f tags.tmp',
+    \ 'awk "length($0) < 400" tags.tmp > tags',
+    \ 'rm tags.tmp'
+    \ ]
+```
+
 # Work in progress
 
 - [x] ~~Support for different tag generators. At the moment this supports only ctags.~~
