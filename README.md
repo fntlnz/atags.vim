@@ -1,10 +1,10 @@
-atags.vim is a neovim plugin that help you to manage async generation of tags.
+atags.vim is a Neovim plugin that helps you creating and updating your tag files.
 
 # Installation
 
 Using [vim-plug](https://github.com/junegunn/vim-plug)
 
-```vim
+```viml
 Plug 'fntlnz/atags.vim'
 ```
 
@@ -52,7 +52,7 @@ let g:atags_build_commands_list = [
 
 #### Generate tags only for files that are not in `.gitignore`
 
-```
+```viml
 let g:atags_build_commands_list = [
     \ 'ag -g "" | ctags -L - --fields=+l -f tags.tmp',
     \ 'awk "length($0) < 400" tags.tmp > tags',
@@ -62,7 +62,7 @@ let g:atags_build_commands_list = [
 
 #### Generate tags only for *PHP files* that are not in `.gitignore`
 
-```
+```viml
 let g:atags_build_commands_list = [
     \ 'ag --php -g "" | ctags -L - --fields=+l -f tags.tmp',
     \ 'awk "length($0) < 400" tags.tmp > tags',
