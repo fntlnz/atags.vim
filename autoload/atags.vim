@@ -8,19 +8,19 @@ let g:autoloaded_atags = 1
 
 let g:atags_had_errors=0
 
-function! atags#onGenerateErr(id, data)
+function! atags#onGenerateErr(id, data, event)
   let g:atags_had_errors=1
   let msg = "❗ An error occurred generating ctags: " . join(a:data)
   echom msg
 endfunction
 
-function! atags#onGenerateOut()
+function! atags#onGenerateOut(id, data, event)
   if g:atags_had_errors==0 && g:atags_quiet==0
     echom "🎉 tags generated  🎉"
   endif
 endfunction
 
-function! atags#onGenerateExit()
+function! atags#onGenerateExit(id, data, event)
 
 endfunction
 
